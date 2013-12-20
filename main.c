@@ -8,10 +8,26 @@ int main(void)
 {
     vector v;
     clients *cls;
+    cstring cc,*a,*b,c,d;
+
+
+    a = cstr_new();
+    b = cstr_new();
+    cstr_init(&c);
+    cstr_init(&d);
+
+    cstr_add(a,"aaaa");
+    cstr_add(b,"bbbb");
+    cstr_add(&c,"cccc");
+    cstr_add(&d,"dddd");
+
+    cstr_data_free(&c);
+    cstr_data_free(&d);
+    cstr_free(a);
+    cstr_free(b);
+
 
     vector_init(&v);
-
-    cstring cc;
 
     cstr_init(&cc);
     cstr_set(&cc,"youssef");
@@ -59,8 +75,11 @@ int main(void)
 
 void test_cstring()
 {
-    cstring *st = cstr_new();
     int i;
+    vector v;
+    cstring *st;
+
+    st = cstr_new();
 
     cstr_init(st);
     cstr_add(st,"youssef");
@@ -73,7 +92,6 @@ void test_cstring()
     i=cstr_find(st,i+1,"ss");
     cstr_replace(st,"iy","i y");
 
-    vector v;
     vector_init(&v);
     cstr_set(st,"aa bb  cc");
     cstr_set(st,"");
@@ -88,11 +106,13 @@ void test_cstring()
 }
 void test_vector()
 {
-    vector *v;
     int i = 0;
+    vector *v;
+    cstring *s,*st;
+
     v = vector_new();
     //vector_init(v);
-    cstring *st = cstr_new();
+    st = cstr_new();
     cstr_add(st,"emil");vector_add(v,st);
 
     st = cstr_new();
@@ -109,7 +129,6 @@ void test_vector()
 
     printf("\nfirst round:\n");
     for (i = 0; i < vector_count(v); i++) {
-        cstring *s;
         s = vector_get(v, i);
         printf("vector %s\n", s->data);
     }
@@ -118,7 +137,6 @@ void test_vector()
 
     printf("\nsecond round:\n");
     for (i = 0; i < vector_count(v); i++) {
-        cstring *s;
         s = vector_get(v, i);
         printf("vector %s\n", s->data);
     }

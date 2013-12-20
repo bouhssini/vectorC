@@ -2,7 +2,8 @@
 
 cstring * cstr_new()
 {
-    cstring *st = malloc(sizeof(cstring));
+    cstring *st;
+    st = malloc(sizeof(cstring));
     cstr_init(st);
     return st;
 }
@@ -10,7 +11,7 @@ void cstr_free(cstring *c )
 {
     cstr_data_free(c);
     free(c);
-    cstr_init(c);
+    //cstr_init(c);
 }
 
 /*----------------------[cstr_vector]----------------------------*/
