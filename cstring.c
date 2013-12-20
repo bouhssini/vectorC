@@ -53,7 +53,8 @@ void cstr_data_free(cstring *c )
     {
         free(c->data);
     }
-    cstr_init(c);
+    c->max = 0;
+    c->size = 0;
 }
 
 void cstr_add(cstring *c, char *e)
@@ -246,33 +247,4 @@ int cstr_split_count_l(cstring*c,char*data,int size)
     cstr_free(tx);
     return cnt;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

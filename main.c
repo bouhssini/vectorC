@@ -3,14 +3,11 @@
 
 void test_vector();
 void test_cstring();
+void test_client();
 
 int main(void)
 {
-    vector v;
-    clients *cls;
-    cstring cc,*a,*b,c,d;
-	int i;
-
+    cstring *a,*b,c,d;
     a = cstr_new();
     b = cstr_new();
     cstr_init(&c);
@@ -26,13 +23,15 @@ int main(void)
     cstr_free(a);
     cstr_free(b);
 
+    return 0;
+}
+void test_client()
+{
+    vector v;
+    clients *cls;
+    int i;
 
     vector_init(&v);
-
-    cstr_init(&cc);
-    cstr_set(&cc,"youssef");
-    cstr_set(&cc,"bouhssini");
-    cstr_data_free(&cc);
 
     cls = client_new();
     cstr_add(cls->addressIP,"81.19.200.15");
@@ -52,7 +51,7 @@ int main(void)
     vector_add(&v,cls);
 
     printf("\nfirst round:\n");
-    
+
     for (i = 0; i < vector_count(&v); i++) {
         clients *s;
         s = vector_get(&v, i);
@@ -68,11 +67,7 @@ int main(void)
         printf("vector %s\n", s->addressIP->data);
     }
     client_vector_data_free(&v);
-
-    return 0;
 }
-
-
 void test_cstring()
 {
     int i;

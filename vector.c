@@ -14,9 +14,9 @@ void vector_free(vector *v)
 }
 void vector_data_free(vector *v)
 {
-    if (v->data == NULL) return;
+    if (v->count == 0) return;
     free(v->data);
-    v->data = NULL;
+    //v->data = NULL;
     v->size = 0;
     v->count = 0;
 }
