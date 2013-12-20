@@ -66,10 +66,12 @@ void *vector_get(vector *v, int index)
 
 void vector_delete(vector *v, int index)
 {
+	int i, j;
+	void **newarr;
     if (index >= v->count)  return;
     //v->data[index] = NULL;
-    int i, j;
-    void **newarr = (void**)malloc(sizeof(void*) * v->count - 1);
+    
+    newarr = (void**)malloc(sizeof(void*) * v->count - 1);
     for (i = 0, j = 0; i < v->count; i++) {
         if (i != index) {
             newarr[j] = v->data[i];

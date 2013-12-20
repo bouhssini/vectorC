@@ -24,16 +24,18 @@ void cstr_vector_delete(vector *v, int index)
 void cstr_vector_data_free(vector*v)
 {
     int i;
+	cstring *s;
     for (i = 0; i < vector_count(v); i++){
-        cstring *s = vector_get(v, i);
+        s = vector_get(v, i);
         cstr_free(s);
     }
     vector_data_free(v);
 }
 void cstr_vector_set(vector *v, int index, void *e)
 {
+	cstring *s;
     if (index >= v->count) return;
-    cstring *s = vector_get(v, index);
+    s = vector_get(v, index);
     cstr_free(s);
     vector_set(v,index,e);
 }

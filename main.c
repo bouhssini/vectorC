@@ -9,7 +9,7 @@ int main(void)
     vector v;
     clients *cls;
     cstring cc,*a,*b,c,d;
-
+	int i;
 
     a = cstr_new();
     b = cstr_new();
@@ -52,7 +52,7 @@ int main(void)
     vector_add(&v,cls);
 
     printf("\nfirst round:\n");
-    int i;
+    
     for (i = 0; i < vector_count(&v); i++) {
         clients *s;
         s = vector_get(&v, i);

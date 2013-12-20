@@ -73,16 +73,18 @@ void client_vector_delete(vector *v, int index)
 void client_vector_data_free(vector*v)
 {
     int i;
+	clients *s;
     for (i = 0; i < vector_count(v); i++){
-        clients *s = vector_get(v, i);
+        s = vector_get(v, i);
         client_free(s);
     }
     vector_data_free(v);
 }
 void client_vector_set(vector *v, int index, void *e)
 {
+	clients *s;
     if (index >= v->count) return;
-    clients *s = vector_get(v, index);
+    s = vector_get(v, index);
     client_free(s);
     vector_set(v,index,e);
 }
